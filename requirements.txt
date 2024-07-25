@@ -4,6 +4,7 @@ dnspython
 pandas
 numpy
 ensure
-pytest
+pytestmypackage==1.0.0
+
 
 -e .
