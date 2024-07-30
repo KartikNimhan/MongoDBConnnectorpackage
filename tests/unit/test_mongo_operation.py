@@ -1,5 +1,5 @@
 import pytest
-from mongodb_connect.mongo_crud import MongoOperation
+from src.database_automation.mongo_crud import MongoOperation
 
 @pytest.fixture
 def mongo_op():
