@@ -1,7 +1,7 @@
-from typing import Any
 import pandas as pd
 from pymongo.mongo_client import MongoClient
 import json
+from typing import Any
 
 class MongoOperation:
     __collection = None
@@ -25,7 +25,8 @@ class MongoOperation:
         if collection_name:
             self.collection_name = collection_name
 
-        if MongoOperation.__collection is None or MongoOperation.__collection != self.collection_name:
+        if (MongoOperation.__collection is None or
+                MongoOperation.__collection != self.collection_name):
             database = self.create_database()
             MongoOperation.__collection = database[self.collection_name]
 
