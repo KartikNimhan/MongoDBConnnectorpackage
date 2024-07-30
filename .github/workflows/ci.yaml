@@ -37,8 +37,9 @@ jobs:
         pip install -r requirements.txt
         pip install -r requirements_dev.txt
 
-    - name: Test with tox
-      run: tox
+    - name: Test with Tox
+      run: |
+        tox -v | tee tox.log
 
     services:
       mongo:
