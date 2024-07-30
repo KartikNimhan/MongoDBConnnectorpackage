@@ -10,6 +10,7 @@ on:
     paths-ignore:
         - 'README.md'  
 
+
 permissions:
   contents: read
 
@@ -24,31 +25,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest tox tox-gh-actions
         pip install -r requirements.txt
-        pip install -r requirements_dev.txt
-
-    - name: Clean .tox directory
-      run: rm -rf .tox
-
     - name: Test with tox
-      run: |
-        tox -v
-      env:
-        pythonLocation: /opt/hostedtoolcache/Python/${{ matrix.python-version }}/x64
-        LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/${{ matrix.python-version }}/x64/lib
-
-    services:
-      mongo:
-        image: mongo:latest
-        ports:
-          - 27017:27017
+      run: tox
