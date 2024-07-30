@@ -10,17 +10,15 @@ on:
     paths-ignore:
         - 'README.md'  
 
-
 permissions:
   contents: read
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest] 
+        os: [ubuntu-latest, windows-latest]
         python-version: ["3.8", "3.9"]
 
     steps:
